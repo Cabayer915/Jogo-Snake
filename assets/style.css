@@ -26,7 +26,8 @@ body {
 }
 
 h1 {
-    color: whitesmoke;
+    font-size: 3rem;
+    color: red;
 }
 
 .espacamento-elementos {
@@ -34,4 +35,40 @@ h1 {
     flex-direction: row;
     justify-content: space-between;
     width: 60%;
+}
+
+canvas {
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.placar {
+    border-radius: 10px;
+    background-color: #121212;
+    width: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 32px;
+    height: 16rem;
+    border: 1px solid black;
+}
+
+.placar h2 {
+    font-size: 1.6rem;
+}
+
+.placar #inserir {
+    font-size: 4rem;
+}
+
+button {
+    margin-top: 1rem;
+    width: auto;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: #121212;
+    margin-bottom: 1rem;
 }

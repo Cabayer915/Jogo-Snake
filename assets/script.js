@@ -55,6 +55,7 @@ function startGame() {
         if (snake[0].x === snake[i].x && snake[0].y === snake[i].y) {
             clearInterval(game);
             alert('Perdeu');
+            reiniciarJogo();
         }
     }
 
@@ -77,6 +78,7 @@ function startGame() {
         food.y = Math.floor(Math.random() * 15 + 1) * box
 
         frutasComidas++;
+        document.getElementById("inserir").innerText = frutasComidas;
         console.log(frutasComidas);
         console.log(intervalo)
 
@@ -96,6 +98,26 @@ function startGame() {
     }
 
     snake.unshift(newHead);
+}
+
+function reiniciarJogo() {
+    snake = [];
+    snake[0] = {
+        x: 8 * box,
+        y: 8 * box
+    };
+
+    direction = "right";
+
+    food.x = Math.floor(Math.random() * 15 + 1) * box;
+    food.y = Math.floor(Math.random() * 15 + 1) * box;
+
+    frutasComidas = 0;
+    document.getElementById("inserir").innerText = frutasComidas;
+
+    clearInterval(game);
+    intervalo = intervaloInicial;
+    game = setInterval(startGame, intervalo);
 }
 
 let game = setInterval(startGame, intervalo);
