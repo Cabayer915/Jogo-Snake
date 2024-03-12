@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    vertical-align: baseline;
+    list-style: none;
+    font-family: "League Spartan", sans-serif;
+    text-decoration: none;
+    transition: ease-in-out 0.3s;
+    color: #e6e6e6;
+}
+
+body {
+    background-image: url("https://img.freepik.com/premium-vector/forest-mountain-lake-landscape-ai-generated-8bit-pixel-game-scene-8bit-arcade-backdrop-retro-game-vector-scenery-2d-videogame-level-design-background-with-forest-trees-river-mountains_8071-54858.jpg?w=826");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 90;
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    color: whitesmoke;
+}
+
+.espacamento-elementos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+}

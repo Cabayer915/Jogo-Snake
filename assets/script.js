@@ -11,9 +11,16 @@ let food = {
     x: Math.floor(Math.random() * 15 + 1) * box,
     y: Math.floor(Math.random() * 15 + 1) * box
 }
+let intervaloInicial = 120;
+let intervalo = intervaloInicial;
+let frutasComidas = 0;
 
 function criarBackGround() {
-    context.fillStyle = "lightgreen";
+    var img = new Image();
+    img.src = "https://img.freepik.com/free-vector/green-abstract-shapes-pattern_1100-84.jpg?t=st=1710258096~exp=1710261696~hmac=0d2f6130271ab299f9c5cf970060e7137ad28f5b4266400aae24f796708792b6&w=740";
+
+    var pattern = context.createPattern(img, 'repeat');
+    context.fillStyle = pattern;
     context.fillRect(0, 0, 16 * box, 16 * box);
 }
 
@@ -44,6 +51,13 @@ function startGame() {
     if (snake[0].y > 15 * box && direction == "down") snake[0].y = 0;
     if (snake[0].y < 0 && direction == "up") snake[0].y = 16 * box;
 
+    for (let i = 1; i < snake.length; i++) {
+        if (snake[0].x === snake[i].x && snake[0].y === snake[i].y) {
+            clearInterval(game);
+            alert('Perdeu');
+        }
+    }
+
     criarBackGround();
     criarSnake();
     makeFood();
@@ -61,6 +75,19 @@ function startGame() {
     } else {
         food.x = Math.floor(Math.random() * 15 + 1) * box,
         food.y = Math.floor(Math.random() * 15 + 1) * box
+
+        frutasComidas++;
+        console.log(frutasComidas);
+        console.log(intervalo)
+
+        if (frutasComidas % 10 === 0) {
+            intervalo -= 10;
+            if (intervalo < 50) {
+                intervalo = 50;
+            }
+            clearInterval(game);
+            game = setInterval(startGame, intervalo);
+        }
     }
 
     let newHead = {
@@ -71,4 +98,4 @@ function startGame() {
     snake.unshift(newHead);
 }
 
-let game = setInterval(startGame, 100);
+let game = setInterval(startGame, intervalo);
