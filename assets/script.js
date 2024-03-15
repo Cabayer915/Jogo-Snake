@@ -32,8 +32,11 @@ function criarSnake() {
 }
 
 function makeFood() {
-    context.fillStyle = "red";
-    context.fillRect(food.x, food.y, box, box);
+    const foodImage = new Image();
+    foodImage.src = "https://cabayer915.github.io/Jogo-Snake/assets/images/apple.png";
+    foodImage.onload = function () {
+        context.drawImage(foodImage, food.x, food.y, box, box);
+    };
 }
 
 document.addEventListener('keydown', update);
@@ -60,9 +63,9 @@ function startGame() {
             clearInterval(game);
             Swal.fire({
                 icon: "error",
-                title: "Você morreu!!!",
+                title: "GAME OVER",
                 text: `Você comeu um total de ${frutasComidas} frutinhas!`
-              });
+            });
             reiniciarJogo();
         }
     }
@@ -83,7 +86,7 @@ function startGame() {
         snake.pop();
     } else {
         food.x = Math.floor(Math.random() * 15 + 1) * box,
-        food.y = Math.floor(Math.random() * 15 + 1) * box
+            food.y = Math.floor(Math.random() * 15 + 1) * box
 
         frutasComidas++;
         document.getElementById("inserir").innerText = frutasComidas;
