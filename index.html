@@ -5,19 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/style.css" />
     <script defer src="./assets/script.js"></script>
-    <link rel="icon" href="./assets/images/cobra.png">
+    <link rel="icon" href="./assets/images/cobra.png" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Snake</title>
   </head>
   <body>
-    <h1>SNAKE GAME</h1>
-    <div class="espacamento-elementos">
-      <canvas id="snake" width="512" height="512"></canvas>
-
-      <div class="placar">
-        <h2>PONTUAÇÃO</h2>
-        <h2 id="inserir"></h2>
-        <button onclick="reiniciarJogo()">Reiniciar Jogo</button>
+    <header>
+      <div class="conteudo-header">
+        <div class="logo">
+          <img src="./assets/images/cobra.png" alt="" width="38px" onclick="">
+        </div>
+        <h1>SNAKE GAME</h1>
+        <nav>
+          <img src="./assets/images/configuracoes.png" alt="" width="38px"/>
+        </nav>
       </div>
-    </div>
+    </header>
+    <main>
+      <div class="espacamento-elementos">
+        <canvas id="snake" width="512" height="512"></canvas>
+
+        <div class="placar">
+          <h2>PONTUAÇÃO</h2>
+          <h2 id="inserir"></h2>
+          <button onclick="reiniciarJogo()">Reiniciar Jogo</button>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

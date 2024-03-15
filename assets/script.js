@@ -26,7 +26,7 @@ function criarBackGround() {
 
 function criarSnake() {
     for (let i = 0; i < snake.length; i++) {
-        context.fillStyle = "blue";
+        context.fillStyle = "orange";
         context.fillRect(snake[i].x, snake[i].y, box, box);
     }
 }
@@ -43,6 +43,10 @@ function update(event) {
     if (event.keyCode == 38 && direction != "down") direction = "up";
     if (event.keyCode == 39 && direction != "left") direction = "right";
     if (event.keyCode == 40 && direction != "up") direction = "down";
+    if ((event.key == "a") && direction != "right") direction = "left";
+    if ((event.key == "w") && direction != "down") direction = "up";
+    if ((event.key == "d") && direction != "left") direction = "right";
+    if ((event.key == "s") && direction != "up") direction = "down";
 }
 
 function startGame() {
@@ -54,7 +58,11 @@ function startGame() {
     for (let i = 1; i < snake.length; i++) {
         if (snake[0].x === snake[i].x && snake[0].y === snake[i].y) {
             clearInterval(game);
-            alert('Perdeu');
+            Swal.fire({
+                icon: "error",
+                title: "Você morreu!!!",
+                text: `Você comeu um total de ${frutasComidas} frutinhas!`
+              });
             reiniciarJogo();
         }
     }
