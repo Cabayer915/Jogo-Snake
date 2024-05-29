@@ -5,15 +5,25 @@ let snake = [];
 snake[0] = {
     x: 8 * box,
     y: 8 * box
-}
+};
 let direction = "right";
 let food = {
     x: Math.floor(Math.random() * 15 + 1) * box,
     y: Math.floor(Math.random() * 15 + 1) * box
-}
+};
 let intervaloInicial = 120;
 let intervalo = intervaloInicial;
 let frutasComidas = 0;
+
+// Carregar as imagens dos sprites
+let headImage = new Image();
+headImage.src = "assets/images/head.png"; // Substitua pelo caminho correto do seu sprite de cabeça
+
+let bodyImage = new Image();
+bodyImage.src = "assets/images/body.png"; // Substitua pelo caminho correto do seu sprite de corpo
+
+let tailImage = new Image();
+tailImage.src = "assets/images/tail.png"; // Substitua pelo caminho correto do seu sprite de cauda
 
 function criarBackGround() {
     var img = new Image();
@@ -26,8 +36,16 @@ function criarBackGround() {
 
 function criarSnake() {
     for (let i = 0; i < snake.length; i++) {
-        context.fillStyle = "orange";
-        context.fillRect(snake[i].x, snake[i].y, box, box);
+        if (i == 0) {
+            // Cabeça da cobra
+            context.drawImage(headImage, snake[i].x, snake[i].y, box, box);
+        } else if (i == snake.length - 1) {
+            // Cauda da cobra
+            context.drawImage(tailImage, snake[i].x, snake[i].y, box, box);
+        } else {
+            // Corpo da cobra
+            context.drawImage(bodyImage, snake[i].x, snake[i].y, box, box);
+        }
     }
 }
 
@@ -74,8 +92,8 @@ function startGame() {
     criarSnake();
     makeFood();
 
-    let snakeX = snake[0].x
-    let snakeY = snake[0].y
+    let snakeX = snake[0].x;
+    let snakeY = snake[0].y;
 
     if (direction == "right") snakeX += box;
     if (direction == "left") snakeX -= box;
@@ -85,13 +103,13 @@ function startGame() {
     if (snakeX != food.x || snakeY != food.y) {
         snake.pop();
     } else {
-        food.x = Math.floor(Math.random() * 15 + 1) * box,
-            food.y = Math.floor(Math.random() * 15 + 1) * box
+        food.x = Math.floor(Math.random() * 15 + 1) * box;
+        food.y = Math.floor(Math.random() * 15 + 1) * box;
 
         frutasComidas++;
         document.getElementById("inserir").innerText = frutasComidas;
         console.log(frutasComidas);
-        console.log(intervalo)
+        console.log(intervalo);
 
         if (frutasComidas % 10 === 0) {
             intervalo -= 10;
@@ -106,7 +124,7 @@ function startGame() {
     let newHead = {
         x: snakeX,
         y: snakeY
-    }
+    };
 
     snake.unshift(newHead);
 }
